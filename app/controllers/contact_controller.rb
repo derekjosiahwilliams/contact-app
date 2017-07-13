@@ -8,6 +8,10 @@ class ContactController < ApplicationController
     render "new.html.erb"
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def create
     contact = Contact.new(first_name: params[:form_first_name], last_name: params[:form_last_name], email: params[:form_email], phone_number: params[:form_phone_number])
     contact.save
@@ -15,6 +19,12 @@ class ContactController < ApplicationController
   end
 
   def show
+    contacts_id = params[:id]
+    @contact = Contact.find_by(id: contacts_id)
     render "show.html.erb"
+  end
+
+  def edit
+    render "edit.html.erb"
   end
 end
