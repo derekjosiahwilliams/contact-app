@@ -8,12 +8,8 @@ class ContactController < ApplicationController
     render "new.html.erb"
   end
 
-  def full_name
-    first_name + " " + last_name
-  end
-
   def create
-    contact = Contact.new(first_name: params[:form_first_name], last_name: params[:form_last_name], email: params[:form_email], phone_number: params[:form_phone_number])
+    contact = Contact.new(first_name: params[:form_first_name], middle_name: params[:form_middle_name], last_name: params[:form_last_name], email: params[:form_email], phone_number: params[:form_phone_number], bio: params[:form_bio])
     contact.save
     render "create.html.erb"
   end
