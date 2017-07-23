@@ -1,7 +1,9 @@
 class ContactController < ApplicationController
   def index
-    @contacts = Contact.all
+  if current_user
     render "index.html.erb"
+  else
+    redirect_to '/login'
   end
 
   def new

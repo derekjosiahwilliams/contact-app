@@ -1,7 +1,14 @@
 <h1>Contact People</h1>
 
+<a href="/signup">signup</a>
+<br>
+<a href="/login">login</a>
+<br>
+<a href="/logout">logout</a>
+
 <% @contacts.each do |contact| %>
 <h2><%= contact.full_name %></h2>
+<h3><%= contact.middle_name %></h3>
 <h4><%= contact.phone_number %></h4>
 <h4><%= contact.email %></h4>
 <% end %>
