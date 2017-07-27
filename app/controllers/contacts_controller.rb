@@ -1,4 +1,7 @@
 class ContactController < ApplicationController
+  has_many :contact_groups
+  has_many :groups, through: :contact_groups
+
   def index
     if current_user
       @contacts = current_user.contacts
@@ -8,12 +11,20 @@ class ContactController < ApplicationController
     end
   end
 
+
   def new
     render "new.html.erb"
   end
 
   def create
-    contact = Contact.new(first_name: params[:form_first_name], middle_name: params[:form_middle_name], last_name: params[:form_last_name], email: params[:form_email], phone_number: params[:form_phone_number], bio: params[:form_bio])
+    contact = Contact.new(
+      first_name: params[:form_first_name],
+      middle_name: params[:form_middle_name],
+      last_name: params[:form_last_name],
+      email: params[:form_email],
+      phone_number: params[:form_phone_number],
+      bio: params[:form_bio]
+    )
     contact.save
     render "create.html.erb"
   end

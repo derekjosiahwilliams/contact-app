@@ -1,13 +1,15 @@
 <h1>Contact People</h1>
-
+<% if current_user %>
+<a href="/logout">logout</a>
+<% else %>
 <a href="/signup">signup</a>
-<br>
 <a href="/login">login</a>
 <br>
-<a href="/logout">logout</a>
+
+<% end %>
 
 <% @contacts.each do |contact| %>
-<h2><%= contact.full_name %></h2>
+<h2><a href="/contacts/<%= contact.id %>"><%= contact.full_name %></h2>
 <h3><%= contact.middle_name %></h3>
 <h4><%= contact.phone_number %></h4>
 <h4><%= contact.email %></h4>
