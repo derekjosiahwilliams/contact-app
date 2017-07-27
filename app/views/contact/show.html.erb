@@ -1,6 +1,9 @@
-<h1>Contact People</h1>
 
-  <h2><%= @contact.full_name %></h2>
+  <h1><%= @contact.full_name %></h1>
+    <h5>Groups</h5>
+      <% @contact.groups.each do |group| %>
+      <span><%= group.name %></span>
+    <% end %>
   <h3><%= @contact.middle_name %></h3>
   <h4><%= @contact.phone_number %></h4>
   <h4><%= @contact.email %></h4>
